@@ -17,7 +17,8 @@ public class LionTest {
 
     @Test
     public void getFoodReturnsListOfPredatorMealTest() throws Exception {
-        Lion lion = new Lion(feline);
+        String sex = "Самец";
+        Lion lion = new Lion(sex, feline);
                 Mockito.when(feline.getFood("Хищник")).
                 thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
@@ -25,8 +26,9 @@ public class LionTest {
     }
 
     @Test
-    public void getKittensReturnsOneTest(){
-        Lion lionKitten = new Lion(feline);
+    public void getKittensReturnsOneTest() throws Exception {
+        String sex = "Самец";
+        Lion lionKitten = new Lion(sex, feline);
         Mockito.when(feline.getKittens()).thenReturn(1);
         Assert.assertEquals(1, lionKitten.getKittens());
     }
@@ -34,11 +36,13 @@ public class LionTest {
     // Тест на возврат исключения с проверкой возвращаемого текста
     @Test
     public void getExceptionCreatingNewLion() {
-        try {
-            Lion lionForException = new Lion("Гибрид");
-        } catch (Exception e) {
-            Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
-        }
+
+        Exception thrown = Assert.assertThrows(Exception.class, () -> {
+            new Lion("Гибрид", feline);
+        });
+
+        Assert.assertEquals("Используйте допустимые значения пола животного - самей или самка", thrown.getMessage());
+
     }
 
 

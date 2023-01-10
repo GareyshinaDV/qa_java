@@ -1,10 +1,15 @@
-
+import com.example.Feline;
 import com.example.Lion;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
+
+
 
 @RunWith(Parameterized.class)
 
@@ -30,8 +35,9 @@ public class LionParameterizedTest {
 
     @Test
         public void doesHaveManeTest () throws Exception {
-        Lion lion = new Lion(sex);
+        Lion lion = new Lion (sex, new Feline());
         assertEquals(expected, lion.doesHaveMane());
     }
+
 
 }

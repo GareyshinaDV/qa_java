@@ -2,10 +2,12 @@ package com.example;
 
 import java.util.List;
 
+
 public class LionAlex extends Lion {
 
-    public LionAlex() throws Exception {
-        super("Самец");
+    public LionAlex(String sex, Feline feline) throws Exception {
+        super(sex, feline);
+        String name = "Алекс";
     }
 
     @Override
@@ -21,3 +23,4 @@ public class LionAlex extends Lion {
         return "Нью-Йоркский зоопарк";
     }
 }
+

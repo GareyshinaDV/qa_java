@@ -44,5 +44,4 @@ Feline feline;
         Assert.assertEquals(1, feline.getKittens());
     }
 
-
 }
